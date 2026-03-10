@@ -332,7 +332,26 @@ if __name__ == "__main__":
 
     # ── Décision du jour ──────────────────────────────────
     res_auj = decider(clf, reg, donnees_auj.copy())
+
+    import serial
+import time
+
+def envoyer_decision(port, decision):
+
+    try:
+        ser = serial.Serial(port,9600,timeout=2)
+        time.sleep(2)
+
+        ser.write(f"{decision}\n".encode())
+
+        ser.close()
+
+        print(f"📡 Décision envoyée à Arduino : {decision}")
+
+    except Exception as e:
+        print("Erreur communication Arduino :",e)
     afficher("AUJOURD'HUI", res_auj, date.today().strftime("%d/%m/%Y"))
+    envoyer_decision(args.port, res_auj["irriguer"])
 
     # ── Prévisions 3 jours ────────────────────────────────
     print("\n" + "─" * 64)

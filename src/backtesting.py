@@ -13,7 +13,7 @@
    python src/04_backtesting.py 2022-01-01 full        ← rapport 2022
 
  Corrections apportées :
-   ✔ Virgule parasite supprimée dans recuperer_jours()
+   ✔ Virgule parasite supprimée dans recuperer_jours()x
    ✔ Évaluation uniquement sur données de TEST (jeu chronologique)
    ✔ Kc dynamique intégré dans predire_jour()
    ✔ Règle pluie modérée + sol humide réintégrée
